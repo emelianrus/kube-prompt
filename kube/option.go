@@ -17,6 +17,11 @@ func optionCompleter(args []string, long bool) []prompt.Suggest {
 
 	var suggests []prompt.Suggest
 	commandArgs, _ := excludeOptions(args)
+
+	if len(commandArgs) < 1 {
+		return []prompt.Suggest{}
+	}
+
 	switch commandArgs[0] {
 	case "get":
 		suggests = getOptions

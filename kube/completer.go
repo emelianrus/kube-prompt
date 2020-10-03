@@ -64,6 +64,9 @@ func (c *Completer) Complete(d prompt.Document) []prompt.Suggest {
 	args := strings.Split(d.TextBeforeCursor(), " ")
 	w := d.GetWordBeforeCursor()
 
+	if len(args) < 1 {
+		return []prompt.Suggest{}
+	}
 	// If PIPE is in text before the cursor, returns empty suggestions.
 	for i := range args {
 		if args[i] == "|" {

@@ -94,7 +94,10 @@ var resourceTypes = []prompt.Suggest{
 }
 
 func (c *Completer) argumentsCompleter(namespace string, args []string) []prompt.Suggest {
-	if len(args) <= 1 {
+	if len(args) < 1 {
+		return []prompt.Suggest {}
+	}
+	if len(args) == 1 {
 		return prompt.FilterHasPrefix(commands, args[0], true)
 	}
 
